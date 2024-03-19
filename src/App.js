@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { FaTint, FaWind } from 'react-icons/fa';
-import { FaIconName } from 'react-icons/fa';
+
 
 
 
@@ -20,11 +20,8 @@ let App = () => {
   let submitHandler = (e) => {
     e.preventDefault();
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fd82e92bde6e2557b3e8f1451430ca6a`)
-      .then((val) => val.json())
-      .then((val) => {
-        if (city === '') {
-          alert('Enter city name');
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q= ${city}&appid=fd82e92bde6e2557b3e8f1451430ca6a`)
+      .then((val) => val.json()).then((val) => {if (city === '') { alert('Enter city name');
         } else if (val.main && val.main.temp !== undefined) {
           let kelvin = val.main.temp;
           let celsius = kelvin - 273.15;
@@ -48,6 +45,7 @@ let App = () => {
 
 return (
   <div className='body'>
+    
     <center>
       <div className='title'><br /><br /><br />
         <h3>Weather App Dashboard</h3>
@@ -59,14 +57,8 @@ return (
           value={city}
           name='city'
           placeholder='Enter a city name'
-          onChange={changeHandler}
-        />
-        <br />
-        <br />
-        <br />
-        <button className='btn' type='submit'>
-          Get
-        </button>
+          onChange={changeHandler}/><br /><br /><br />
+        <button className='btn' type='submit'>Get</button>
         <br />
         <p className='demo1'>
           <FaTint /> Humidity: {humidity}
